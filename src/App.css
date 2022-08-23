@@ -36,3 +36,68 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 15px;
+  align-items: center;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: auto;
+  padding: 10px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: auto;
+  padding: 10px;
+}
+
+.article-card {
+  border: 2px solid;
+  display: grid;
+  grid:
+    "article-title article-title" 1fr
+    "article-author article-author" 30px
+    "article-vote-count article-comment-count" 1fr
+    / 1fr 1fr;
+  gap: 8px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.article-title {
+  margin: 5px;
+  grid-area: article-title;
+}
+
+.article-vote-count {
+  grid-area: article-vote-count;
+}
+
+.article-comment-count {
+  grid-area: article-comment-count;
+}
+
+.article-author {
+  grid-area: article-author;
+  align-self: center;
+}
+
+.article-body {
+  text-align: justify;
+}
