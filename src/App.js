@@ -6,7 +6,7 @@ import Header from "./components/Header";
 import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
-// import Topics from "./components/Topics";
+import Topics from "./components/Topics";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -16,6 +16,8 @@ function App() {
       "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953",
   });
 
+  const [articles, setArticles] = useState([]);
+
   return (
     <BrowserRouter>
       <UserContext.Provider value={{ loggedInUser, setLoggedInUser }}>
@@ -24,8 +26,16 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/articles" element={<Articles />} />
-            {/* <Route path="/topics/:topic/articles" element={<Topics />} /> */}
+            <Route
+              path="/articles"
+              element={
+                <Articles articles={articles} setArticles={setArticles} />
+              }
+            />
+            <Route
+              path="/topics/:topic/articles"
+              element={<Topics articles={articles} setArticles={setArticles} />}
+            />
           </Routes>
         </div>
       </UserContext.Provider>
