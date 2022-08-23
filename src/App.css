@@ -36,3 +36,48 @@
     transform: rotate(360deg);
   }
 }
+
+.navbar-container {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 15px;
+  align-items: center;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  margin: auto;
+  padding: 10px;
+}
+
+.user-avatar {
+  width: 50px;
+  height: 50px;
+}
+
+.article-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: auto;
+  padding: 10px;
+}
+
+.article-card {
+  border: 2px solid;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+}
+
+.article-title {
+  margin: 5px;
+}
+
+.article-body {
+  text-align: justify;
+}
