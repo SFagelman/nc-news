@@ -17,8 +17,7 @@ const Articles = () => {
       <ul className="article-container">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
-        })}{" "}
-        padding-left: 10px; padding-right: 10px; padding-bottom: 10px;
+        })}
       </ul>
     </>
   );

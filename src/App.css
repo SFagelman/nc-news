@@ -68,7 +68,13 @@
 
 .article-card {
   border: 2px solid;
-
+  display: grid;
+  grid:
+    "article-title article-title" 1fr
+    "article-author article-author" 30px
+    "article-vote-count article-comment-count" 1fr
+    / 1fr 1fr;
+  gap: 8px;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
@@ -76,6 +82,20 @@
 
 .article-title {
   margin: 5px;
+  grid-area: article-title;
+}
+
+.article-vote-count {
+  grid-area: article-vote-count;
+}
+
+.article-comment-count {
+  grid-area: article-comment-count;
+}
+
+.article-author {
+  grid-area: article-author;
+  align-self: center;
 }
 
 .article-body {
