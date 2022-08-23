@@ -1,19 +1,18 @@
 import { fetchArticles } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import ArticleCard from "../components/ArticleCard";
 import SortBy from "../components/SortBy";
 
-const Articles = () => {
-  const [articles, setArticles] = useState([]);
-
+const Articles = ({ articles, setArticles }) => {
   useEffect(() => {
     fetchArticles().then((res) => {
       setArticles(res);
     });
-  }, []);
+  }, [setArticles]);
 
   return (
     <>
+      <SortBy />
       <ul className="article-container">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
