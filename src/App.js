@@ -7,6 +7,7 @@ import NavBar from "./components/NavBar";
 import Home from "./components/Home";
 import Articles from "./components/Articles";
 import Topics from "./components/Topics";
+import SingleArticle from "./components/SingleArticle";
 
 function App() {
   const [loggedInUser, setLoggedInUser] = useState({
@@ -36,6 +37,7 @@ function App() {
               path="/topics/:topic/articles"
               element={<Topics articles={articles} setArticles={setArticles} />}
             />
+            <Route path="/articles/:article_id" element={<SingleArticle />} />
           </Routes>
         </div>
       </UserContext.Provider>

@@ -8,6 +8,15 @@ export const fetchArticles = () => {
     });
 };
 
+export const fetchSingleArticle = (article_id) => {
+  return axios
+    .get(`https://sf-backend-project.herokuapp.com/api/articles/${article_id}`)
+    .then(({ data }) => {
+      console.log(data.article);
+      return data.article;
+    });
+};
+
 export const fetchArticleByTopic = (topic) => {
   return axios
     .get(`https://sf-backend-project.herokuapp.com/api/articles?topic=${topic}`)
