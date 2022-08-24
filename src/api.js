@@ -25,4 +25,15 @@ export const fetchArticleByTopic = (topic) => {
     });
 };
 
+export const patchArticle = (article_id, change) => {
+  return axios
+    .patch(
+      `https://sf-backend-project.herokuapp.com/api/articles/${article_id}`,
+      { inc_votes: change }
+    )
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
+
 // "axios config objects" for complex queries in api calls - https://masteringjs.io/tutorials/axios/get-query-params
