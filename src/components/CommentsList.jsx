@@ -2,14 +2,19 @@ import { useState, useEffect } from "react";
 import { fetchCommentsByArticle } from "../api";
 import CommentCard from "../components/CommentCard";
 
-const CommentsList = ({ article_id }) => {
+const CommentsList = ({
+  article_id,
+  commentSubmitted,
+  setCommentSubmitted,
+}) => {
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
+    setCommentSubmitted(false);
     fetchCommentsByArticle(article_id).then((res) => {
       setComments(res);
     });
-  }, [article_id]);
+  }, [article_id, commentSubmitted]);
 
   return (
     <>

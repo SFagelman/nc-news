@@ -12,7 +12,6 @@ export const fetchSingleArticle = (article_id) => {
   return axios
     .get(`https://sf-backend-project.herokuapp.com/api/articles/${article_id}`)
     .then(({ data }) => {
-      console.log(data.article);
       return data.article;
     });
 };
@@ -40,6 +39,17 @@ export const fetchCommentsByArticle = (article_id) => {
   return axios
     .get(
       `https://sf-backend-project.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then(({ data }) => {
+      return data.comments;
+    });
+};
+
+export const addCommentByArticle = (article_id, username, comment_text) => {
+  return axios
+    .post(
+      `https://sf-backend-project.herokuapp.com/api/articles/${article_id}/comments`,
+      { username: username, body: comment_text }
     )
     .then(({ data }) => {
       return data.comments;

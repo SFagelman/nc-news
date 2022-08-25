@@ -172,6 +172,8 @@
   border: 1px dashed;
   padding: 10px;
   margin: 2px;
+  width: 300px;
+  word-wrap: break-word;
 }
 
 .comment-vote-count {

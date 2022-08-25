@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchSingleArticle, patchArticle } from "../api";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi";
 import CommentsList from "../components/CommentsList";
+import AddComment from "../components/AddComment";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -10,6 +11,7 @@ const SingleArticle = () => {
   const [optimisticVotes, setOptimisticVotes] = useState(0);
   const [votingError, setVotingError] = useState(false);
   const [commentsVisible, setCommentsVisible] = useState(false);
+  const [commentSubmitted, setCommentSubmitted] = useState(false);
 
   useEffect(() => {
     fetchSingleArticle(article_id).then((res) => {
@@ -27,6 +29,7 @@ const SingleArticle = () => {
 
   const updateVote = (change) => {
     setOptimisticVotes((currOptimisticVotes) => {
+      setVotingError(false);
       return currOptimisticVotes + change;
     });
     patchArticle(article.article_id, change).catch(() => {
@@ -75,10 +78,20 @@ const SingleArticle = () => {
             showComments();
           }}
         >
-          View Comments ({article.comment_count})
+          View Comments
         </button>
       </section>
-      {commentsVisible && <CommentsList article_id={article.article_id} />}
+      <AddComment
+        article_id={article.article_id}
+        setCommentSubmitted={setCommentSubmitted}
+      />
+      {commentsVisible && (
+        <CommentsList
+          article_id={article.article_id}
+          commentSubmitted={commentSubmitted}
+          setCommentSubmitted={setCommentSubmitted}
+        />
+      )}
     </>
   );
 };
