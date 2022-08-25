@@ -155,3 +155,25 @@
   padding: 10px;
   align-items: center;
 }
+
+/* COMMENTS */
+
+.comment-list-container {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  padding: 10px;
+}
+
+.comment-card {
+  margin: auto;
+  text-align: left;
+  border: 1px dashed;
+  padding: 10px;
+  margin: 2px;
+}
+
+.comment-vote-count {
+  padding: 4px;
+}

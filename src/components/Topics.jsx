@@ -15,7 +15,7 @@ const Topics = ({ articles, setArticles }) => {
 
   return (
     <>
-      <ul className="article-container">
+      <ul className="article-list-container">
         {articles.map((article) => {
           return <ArticleCard key={article.article_id} article={article} />;
         })}

@@ -2,11 +2,14 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { fetchSingleArticle, patchArticle } from "../api";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi";
+import CommentsList from "../components/CommentsList";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
   const [article, setArticle] = useState({});
   const [optimisticVotes, setOptimisticVotes] = useState(0);
+  const [votingError, setVotingError] = useState(false);
+  const [commentsVisible, setCommentsVisible] = useState(false);
 
   useEffect(() => {
     fetchSingleArticle(article_id).then((res) => {
@@ -14,12 +17,20 @@ const SingleArticle = () => {
     });
   }, [article_id]);
 
+  const showComments = () => {
+    if (commentsVisible === true) {
+      setCommentsVisible(false);
+    } else {
+      setCommentsVisible(true);
+    }
+  };
+
   const updateVote = (change) => {
     setOptimisticVotes((currOptimisticVotes) => {
       return currOptimisticVotes + change;
     });
     patchArticle(article.article_id, change).catch(() => {
-      alert("Error - vote not added");
+      setVotingError(true);
       setOptimisticVotes((currOptimisticVotes) => {
         return currOptimisticVotes - 1;
       });
@@ -37,9 +48,10 @@ const SingleArticle = () => {
       <article className="single-article-body">{article.body}</article>
 
       <section className="vote-comment-footer">
-        <div className="single-article-vote-count">
+        <p className="single-article-vote-count">
           Votes: {article.votes + optimisticVotes}
-        </div>
+        </p>
+        {votingError && <p>Vote not counted</p>}
         <button
           className="vote-up-button"
           onClick={() => {
@@ -56,10 +68,17 @@ const SingleArticle = () => {
         >
           <HiArrowDown />
         </button>
-        <div className="single-article-comment-count">
-          Comments: {article.comment_count}
-        </div>
+
+        <button
+          className="single-article-comment-count"
+          onClick={() => {
+            showComments();
+          }}
+        >
+          View Comments ({article.comment_count})
+        </button>
       </section>
+      {commentsVisible && <CommentsList article_id={article.article_id} />}
     </>
   );
 };

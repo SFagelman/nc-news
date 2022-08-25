@@ -36,4 +36,14 @@ export const patchArticle = (article_id, change) => {
     });
 };
 
+export const fetchCommentsByArticle = (article_id) => {
+  return axios
+    .get(
+      `https://sf-backend-project.herokuapp.com/api/articles/${article_id}/comments`
+    )
+    .then(({ data }) => {
+      return data.comments;
+    });
+};
+
 // "axios config objects" for complex queries in api calls - https://masteringjs.io/tutorials/axios/get-query-params
