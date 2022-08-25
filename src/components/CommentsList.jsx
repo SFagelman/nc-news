@@ -9,7 +9,7 @@ const CommentsList = ({ article_id }) => {
     fetchCommentsByArticle(article_id).then((res) => {
       setComments(res);
     });
-  }, [article_id]);
+  }, [article_id, comments]);
 
   return (
     <>

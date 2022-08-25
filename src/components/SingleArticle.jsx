@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { fetchSingleArticle, patchArticle } from "../api";
 import { HiArrowUp, HiArrowDown } from "react-icons/hi";
 import CommentsList from "../components/CommentsList";
+import AddComment from "../components/AddComment";
 
 const SingleArticle = () => {
   const { article_id } = useParams();
@@ -75,9 +76,10 @@ const SingleArticle = () => {
             showComments();
           }}
         >
-          View Comments ({article.comment_count})
+          View Comments
         </button>
       </section>
+      <AddComment article_id={article.article_id} />
       {commentsVisible && <CommentsList article_id={article.article_id} />}
     </>
   );

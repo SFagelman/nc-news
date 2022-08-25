@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { fetchArticleByTopic } from "../api";
-import SortBy from "./SortBy";
 import ArticleCard from "./ArticleCard";
 
 const Topics = ({ articles, setArticles }) => {
