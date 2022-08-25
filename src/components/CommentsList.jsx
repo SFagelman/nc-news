@@ -3,14 +3,13 @@ import { fetchCommentsByArticle } from "../api";
 import CommentCard from "../components/CommentCard";
 
 const CommentsList = ({ article_id }) => {
-  console.log(article_id);
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
     fetchCommentsByArticle(article_id).then((res) => {
       setComments(res);
     });
-  }, []);
+  }, [article_id]);
 
   return (
     <>
