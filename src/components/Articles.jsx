@@ -1,24 +1,30 @@
 import { fetchArticles } from "../api";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
-import SortBy from "../components/SortBy";
 
 const Articles = ({ articles, setArticles }) => {
+  const [isLoading, setIsLoading] = useState(true);
+
   useEffect(() => {
     fetchArticles().then((res) => {
       setArticles(res);
+      setIsLoading(false);
     });
   }, [setArticles]);
 
-  return (
-    <>
-      <ul className="article-list-container">
-        {articles.map((article) => {
-          return <ArticleCard key={article.article_id} article={article} />;
-        })}
-      </ul>
-    </>
-  );
+  if (isLoading) {
+    return <p>Loading...</p>;
+  } else {
+    return (
+      <>
+        <ul className="article-list-container">
+          {articles.map((article) => {
+            return <ArticleCard key={article.article_id} article={article} />;
+          })}
+        </ul>
+      </>
+    );
+  }
 };
 
 export default Articles;
