@@ -24,6 +24,26 @@ export const fetchArticleByTopic = (topic) => {
     });
 };
 
+export const fetchArticleBySortQuery = (sort) => {
+  return axios
+    .get(
+      `https://sf-backend-project.herokuapp.com/api/articles?sort_by=${sort}`
+    )
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
+
+export const fetchArticleByTopicAndSortQuery = (sort, topic) => {
+  return axios
+    .get(
+      `https://sf-backend-project.herokuapp.com/api/articles?topic=${topic}&sort_by=${sort}`
+    )
+    .then(({ data }) => {
+      return data.articles;
+    });
+};
+
 export const patchArticle = (article_id, change) => {
   return axios
     .patch(
