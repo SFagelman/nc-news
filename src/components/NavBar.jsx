@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
-import SortBy from "./SortBy";
+import TopicFilter from "./TopicFilter";
 
 const NavBar = () => {
   const { loggedInUser } = useContext(UserContext);
@@ -25,7 +25,7 @@ const NavBar = () => {
         </div>
       </section>
       <section className="topics-container">
-        <SortBy />
+        <TopicFilter />
       </section>
     </>
   );

@@ -1,6 +1,7 @@
 import { fetchArticles } from "../api";
 import { useEffect, useState } from "react";
 import ArticleCard from "../components/ArticleCard";
+import SortBy from "./SortBy";
 
 const Articles = ({ articles, setArticles }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -17,6 +18,7 @@ const Articles = ({ articles, setArticles }) => {
   } else {
     return (
       <>
+        <SortBy articles={articles} setArticles={setArticles} />
         <ul className="article-list-container">
           {articles.map((article) => {
             return <ArticleCard key={article.article_id} article={article} />;
