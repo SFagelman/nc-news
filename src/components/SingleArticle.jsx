@@ -42,56 +42,62 @@ const SingleArticle = () => {
 
   return (
     <>
-      <section className="single-article-header">
-        <h2 className="single-article-title">{article.title}</h2>
-        <h4 className="single-article-author">written by: {article.author}</h4>
-        <h5 className="single-article-topic">Topic: {article.topic}</h5>
-      </section>
+      <hr className="line" />
+      <div className="single-article-container">
+        <section className="single-article-header">
+          <h2 className="single-article-title">{article.title}</h2>
+          <h5 className="single-article-author">
+            written by: {article.author}
+          </h5>
+          <h5 className="single-article-topic">Topic: {article.topic}</h5>
+        </section>
 
-      <article className="single-article-body">{article.body}</article>
+        <article className="single-article-body">{article.body}</article>
+        <hr className="line" />
 
-      <section className="vote-comment-footer">
-        <p className="single-article-vote-count">
-          Votes: {article.votes + optimisticVotes}
-        </p>
-        {votingError && <p>Vote not counted</p>}
-        <button
-          className="vote-up-button"
-          onClick={() => {
-            updateVote(1);
-          }}
-        >
-          <HiArrowUp />
-        </button>
-        <button
-          className="vote-down-button"
-          onClick={() => {
-            updateVote(-1);
-          }}
-        >
-          <HiArrowDown />
-        </button>
+        <section className="vote-comment-footer">
+          <p className="single-article-vote-count">
+            Votes: {article.votes + optimisticVotes}
+          </p>
+          {votingError && <p>Vote not counted</p>}
+          <button
+            className="vote-up-button"
+            onClick={() => {
+              updateVote(1);
+            }}
+          >
+            <HiArrowUp />
+          </button>
+          <button
+            className="vote-down-button"
+            onClick={() => {
+              updateVote(-1);
+            }}
+          >
+            <HiArrowDown />
+          </button>
 
-        <button
-          className="single-article-comment-count"
-          onClick={() => {
-            showComments();
-          }}
-        >
-          View Comments
-        </button>
-      </section>
-      <AddComment
-        article_id={article.article_id}
-        setCommentSubmitted={setCommentSubmitted}
-      />
-      {commentsVisible && (
-        <CommentsList
+          <button
+            className="single-article-comment-count"
+            onClick={() => {
+              showComments();
+            }}
+          >
+            View Comments
+          </button>
+        </section>
+        <AddComment
           article_id={article.article_id}
-          commentSubmitted={commentSubmitted}
           setCommentSubmitted={setCommentSubmitted}
         />
-      )}
+        {commentsVisible && (
+          <CommentsList
+            article_id={article.article_id}
+            commentSubmitted={commentSubmitted}
+            setCommentSubmitted={setCommentSubmitted}
+          />
+        )}
+      </div>
     </>
   );
 };

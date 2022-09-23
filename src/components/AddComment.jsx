@@ -28,6 +28,7 @@ const AddComment = ({ article_id, setCommentSubmitted }) => {
   return (
     <form onSubmit={handleSubmit}>
       <textarea
+        className="new-comment-textbox"
         name="textbox"
         id="new-comment-textbox"
         cols="30"

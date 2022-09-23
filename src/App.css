@@ -1,3 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway&display=swap");
+
+* {
+  font-family: "Raleway", sans-serif;
+  text-shadow: 0 2px 3px rgba(0, 0, 0, 0.2);
+  background-color: rgb(236, 235, 235);
+  color: rgb(20, 20, 20);
+}
+
+html {
+  overflow-y: hidden;
+}
+
 .App {
   text-align: center;
 }
@@ -37,14 +50,60 @@
   }
 }
 
+.title {
+  width: 300px;
+  margin: 10px auto;
+  padding: 10px;
+  /* border: 3px solid rgba(148, 148, 148, 0.445);
+  border-radius: 0.1cm; */
+}
+
+.line {
+  /* border: 2px solid black; */
+  border: 0;
+  height: 1px;
+  background: #333;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.home-info {
+  /* border: 2px solid; */
+  width: 300px;
+  margin: 50px auto;
+}
+
 /* NAVBAR */
 
 .navbar-container {
   display: flex;
   flex-direction: row;
   gap: 20px;
-  padding: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
   align-items: center;
+}
+
+.navbar-container a {
+  text-decoration: dotted black;
+  font-weight: bold;
+  padding: 4px;
+  /* border: 1px solid rgba(148, 148, 148, 0.445); */
+  border-radius: 0.1cm;
+}
+
+/* SORT-BY */
+
+.sort-by {
+  margin: 8px auto;
+  /* border: 2px solid; */
+  width: 300px;
+  font-size: 14px;
+}
+
+.sort-dropdown {
+  border-radius: 0.1cm;
+  border: 1px solid rgba(148, 148, 148, 0.445);
 }
 
 /* USER DISPLAY */
@@ -52,27 +111,46 @@
 .user-container {
   display: flex;
   flex-direction: row;
-  gap: 16px;
   margin: auto;
   padding: 10px;
+  border-radius: 0.2cm;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .user-avatar {
   width: 50px;
   height: 50px;
+  border: 1px solid rgba(107, 107, 107, 0.527);
+  border-radius: 0.2cm;
+  filter: grayscale(100%);
 }
 
-/* SORTBY */
+/* TOPICS */
 
 .topic-container {
-  border: 2px solid;
+  /* border: 2px solid; */
+  border: 1px solid rgba(107, 107, 107, 0.527);
+  border-radius: 0.1cm;
+  /* border: 1px solid rgba(148, 148, 148, 0.445); */
+  border-radius: 0.1cm;
   display: flex;
   height: 10px;
   flex-direction: row;
-  margin: auto;
-  gap: 20px;
-  padding: 15px;
+  margin: auto 20px;
+  justify-content: space-around;
+  padding: 10px;
+  margin-bottom: 18px;
   align-items: center;
+  /* font-size: small; */
+}
+
+.topic-container a {
+  text-decoration: none;
+  /* border: 1px solid rgba(148, 148, 148, 0.445); */
+  border-radius: 0.1cm;
+  padding: 4px;
+  font-size: small;
 }
 
 /* ARTICLE LIST */
@@ -83,25 +161,51 @@
   gap: 16px;
   margin: auto;
   padding: 10px;
+  height: 420px;
+  overflow-y: auto;
+  /* border: 2px solid; */
+}
+
+.article-list-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+.article-list-container::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.article-list-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
 }
 
 .article-card {
-  border: 2px solid;
+  border: 2px solid rgba(148, 148, 148, 0.445);
+  border-radius: 0.1cm;
   display: grid;
   grid:
     "article-title article-title" 1fr
     "article-author article-author" 30px
-    "article-vote-count article-comment-count" 1fr
+    "article-vote-count article-comment-count" 0.5fr
     / 1fr 1fr;
   gap: 8px;
+  align-items: center;
   padding-left: 10px;
   padding-right: 10px;
   padding-bottom: 10px;
+  /* justify-content: space-around; */
 }
 
 .article-title {
   margin: 5px;
   grid-area: article-title;
+  /* text-decoration-style: dotted; */
+  font-weight: 900;
 }
 
 .article-vote-count {
@@ -115,6 +219,7 @@
 .article-author {
   grid-area: article-author;
   align-self: center;
+  font-weight: 100;
 }
 
 .article-body {
@@ -123,40 +228,96 @@
 
 /* SINGLE ARTICLE */
 
+.single-article-container {
+  /* border: 1px solid; */
+  height: 500px;
+  overflow-y: scroll;
+}
+
+.single-article-container::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+.single-article-container::-webkit-scrollbar {
+  width: 12px;
+  background-color: #f5f5f5;
+}
+
+.single-article-container::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
 .single-article-header {
+  /* height: 100px; */
   display: grid;
   grid:
     "single-article-title single-article-title" 1fr
-    "single-article-author single-article-topic" 50px
+    "single-article-author single-article-topic" 30px
     / 1fr 1fr;
   gap: 8px;
+  align-items: center;
   padding: 10px;
 }
 
 .single-article-title {
   grid-area: single-article-title;
+  margin: 10px auto;
 }
 .single-article-author {
   grid-area: single-article-author;
+  font-weight: 200;
 }
 .single-article-topic {
   grid-area: single-article-topic;
+  font-weight: 200;
 }
 .single-article-body {
   text-align: justify;
   padding: 15px;
 }
 
+button,
+input {
+  border-color: rgba(148, 148, 148, 0.445);
+  border-radius: 0.1cm;
+  margin: 8px;
+  font-family: sans-serif;
+  font-size: 0.9rem;
+  transition: background 150ms ease-in-out, transform 150ms ease;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button:hover,
+button:focus,
+input:hover,
+input:focus {
+  transform: translate(0, -2px);
+}
+
 .vote-comment-footer {
   display: flex;
   flex-direction: row;
   margin: auto;
-  gap: 20px;
+  justify-content: center;
+  gap: 5px;
   padding: 10px;
   align-items: center;
+  /* justify-content: space-around; */
 }
 
 /* COMMENTS */
+
+.new-comment-textbox {
+  /* border: 1px solid red; */
+  resize: vertical;
+  padding: 10px;
+}
 
 .comment-list-container {
   display: flex;
@@ -169,13 +330,25 @@
 .comment-card {
   margin: auto;
   text-align: left;
-  border: 1px dashed;
+  /* border: 2px dotted; */
+  border: 1px solid rgba(148, 148, 148, 0.445);
+  border-radius: 0.2cm;
   padding: 10px;
-  margin: 2px;
+  margin: 5px;
   width: 300px;
   word-wrap: break-word;
 }
 
 .comment-vote-count {
   padding: 4px;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.comment-author {
+  margin: 5px auto;
+}
+
+.comment-body {
+  margin-top: 15px;
 }

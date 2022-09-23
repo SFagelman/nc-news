@@ -1,5 +1,10 @@
 const Header = () => {
-  return <h1>Northcoder News</h1>;
+  return (
+    <>
+      <h1 className="title">Northcoders News</h1>
+      <hr className="line" />
+    </>
+  );
 };
 
 export default Header;

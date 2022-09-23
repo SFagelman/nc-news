@@ -25,9 +25,11 @@ const SortBy = ({ topic, articles, setArticles }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="sort-by" onSubmit={handleSubmit}>
+      <hr className="line" />
       <label htmlFor="sortBys">Sort By: </label>
       <select
+        className="sort-dropdown"
         onChange={handleChange}
         name="sortBys"
         id="sortBys"
@@ -46,7 +48,8 @@ const SortBy = ({ topic, articles, setArticles }) => {
         <option value="votes&order=ASC">Votes: High-Low</option>
         <option value="votes&order=DESC">Votes: High-Low</option>
       </select>
-      <input type="submit" value="Sort" />
+      <input className="sort-button" type="submit" value="Sort" />
+      <hr className="line" />
     </form>
   );
 };
