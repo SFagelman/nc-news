@@ -26,7 +26,7 @@ const AddComment = ({ article_id, setCommentSubmitted }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form className="submit-comment-container" onSubmit={handleSubmit}>
       <textarea
         className="new-comment-textbox"
         name="textbox"
@@ -40,7 +40,11 @@ const AddComment = ({ article_id, setCommentSubmitted }) => {
           setNewComment(event.target.value);
         }}
       ></textarea>
-      <input type="submit" value="Submit" />
+      <input
+        className="new-comment-submit-button"
+        type="submit"
+        value="Submit"
+      />
       {commentSubmitError && <p>Comment could not be submitted</p>}
       {addedCommentAlert && <p>Comment added</p>}
     </form>

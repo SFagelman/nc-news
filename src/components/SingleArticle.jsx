@@ -56,26 +56,28 @@ const SingleArticle = () => {
         <hr className="line" />
 
         <section className="vote-comment-footer">
-          <p className="single-article-vote-count">
-            Votes: {article.votes + optimisticVotes}
-          </p>
-          {votingError && <p>Vote not counted</p>}
-          <button
-            className="vote-up-button"
-            onClick={() => {
-              updateVote(1);
-            }}
-          >
-            <HiArrowUp />
-          </button>
-          <button
-            className="vote-down-button"
-            onClick={() => {
-              updateVote(-1);
-            }}
-          >
-            <HiArrowDown />
-          </button>
+          <div className="voting-container">
+            <p className="single-article-vote-count">
+              Votes: {article.votes + optimisticVotes}
+            </p>
+            {votingError && <p>Vote not counted</p>}
+            <button
+              className="vote-up-button"
+              onClick={() => {
+                updateVote(1);
+              }}
+            >
+              <HiArrowUp />
+            </button>
+            <button
+              className="vote-down-button"
+              onClick={() => {
+                updateVote(-1);
+              }}
+            >
+              <HiArrowDown />
+            </button>
+          </div>
 
           <button
             className="single-article-comment-count"
@@ -83,7 +85,7 @@ const SingleArticle = () => {
               showComments();
             }}
           >
-            View Comments
+            {commentsVisible ? "Hide Comments" : "View Comments"}
           </button>
         </section>
         <AddComment
